@@ -28,7 +28,7 @@ public class EmployeesDao {
     
     //Método de login
     public Employees loginQuery(String user, String password){
-        String query = "SELECT * FROM employees WHERE user_name = ?  AND password = ?";
+        String query = "SELECT * FROM employees WHERE username = ?  AND password = ?";
         Employees employee = new Employees();
         try{
             conn = cn.getConnection();
@@ -43,7 +43,7 @@ public class EmployeesDao {
                 id_user = employee.getId();
                 employee.setFull_name(rs.getString("full_name"));
                 full_name_user = employee.getFull_name();
-                employee.setUsername(rs.getString("user_name"));
+                employee.setUsername(rs.getString("username"));
                 username_user = employee.getUsername();
                 employee.setAddress(rs.getString("address"));
                 address_user = employee.getAddress();
@@ -63,7 +63,7 @@ public class EmployeesDao {
     
     //Registrar empleado
     public boolean registerEmployeeQuery(Employees employee){
-        String query = "INSERT INTO employees(id, full_name, user_name, address, telephone, email, password, rol, created,"
+        String query = "INSERT INTO employees(id, full_name, username, address, telephone, email, password, rol, created,"
                 + "updated) VALUES(?,?,?,?,?,?,?,?,?,?)";
         
         Timestamp datetime = new Timestamp(new Date().getTime());
